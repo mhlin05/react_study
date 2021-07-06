@@ -1,33 +1,14 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+import List from './components/List/List'
+import Search from './components/Search/Search'
+
 export default class App extends Component {
-  getStudentData = () => {
-    Axios.get('http://localhost:3000/api1/students').then(
-      (Response) => {
-        console.log('成功了', Response.data)
-      },
-      (error) => {
-        console.log('失败了')
-      }
-    )
-    // const { data } = await Axios.get('http://localhost:3000/students')
-    // console.log(data)
-  }
-  getCarData = () => {
-    Axios.get('http://localhost:3000/api2/cars').then(
-      (Response) => {
-        console.log('成功了', Response.data)
-      },
-      (error) => {
-        console.log('失败了')
-      }
-    )
-  }
   render() {
+    // 解构出state中的属性
     return (
-      <div>
-        <button onClick={this.getStudentData}>点我学生获取</button>
-        <button onClick={this.getCarData}>点我汽车获取</button>
+      <div className="container">
+        <Search></Search>
+        <List></List>
       </div>
     )
   }
