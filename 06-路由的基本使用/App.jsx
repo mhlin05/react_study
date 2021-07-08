@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
-// 路由组件
-import Home from './pages/Home/Home'
-import About from './pages/About/About'
-// 一般组件
-import Header from './components/Header/Header'
-import MyNavLink from './components/MyNavLink/MyNavLink'
+import { Link, BrowserRouter, Route } from 'react-router-dom'
+import Home from './components/Home/Home'
+import About from './components/About/About'
+
 export default class App extends Component {
   render() {
     return (
@@ -13,7 +10,7 @@ export default class App extends Component {
         <div className="row">
           <div className="col-xs-offset-2 col-xs-8">
             <div className="page-header">
-              <Header />
+              <h2>React Router Demo</h2>
             </div>
           </div>
         </div>
@@ -29,34 +26,20 @@ export default class App extends Component {
               </a> */}
 
               {/* react中靠路由链接切换组件--编写路由链接 */}
-              {/* <NavLink
-                activeClassName="demo"
-                className="list-group-item"
-                to="/about"
-              >
+              <Link className="list-group-item" to="/about">
                 about
-              </NavLink>
-              <NavLink
-                activeClassName="demo"
-                className="list-group-item"
-                to="/home"
-              >
+              </Link>
+              <Link className="list-group-item" to="/home">
                 home
-              </NavLink> */}
-              <MyNavLink to="/home">Home</MyNavLink>
-              <MyNavLink to="/about">ABout</MyNavLink>
+              </Link>
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
                 {/* 注册路由 */}
-
-                <Switch>
-                  <Route path="/about" component={About} />
-                  <Route path="/home" component={Home} />
-                  <Redirect to="/about" />
-                </Switch>
+                <Route path="/about" component={About} />
+                <Route path="/home" component={Home} />
               </div>
             </div>
           </div>
