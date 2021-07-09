@@ -10,30 +10,6 @@ export default class Message extends Component {
       { id: '4', title: '消息4' }
     ]
   }
-
-  replaceShow = (id, title) => {
-    return () => {
-      // replace跳转+params参数
-      // this.props.history.replace(`/home/message/detail/${id}/${title}`)
-      // replace跳转+search参数
-      // this.props.history.replace(
-      //   `/home/message/detail/?id=${id}&title=${title}`
-      // )
-      // replace跳转+state参数
-      this.props.history.replace(`/home/message/detail/`, { id, title })
-    }
-  }
-
-  pushShow = (id, title) => {
-    return () => {
-      // push跳转+params参数
-      // this.props.history.push(`/home/message/detail/${id}/${title}`)
-      // push跳转+search参数
-      // this.props.history.push(`/home/message/detail/?id=${id}&title=${title}`)
-      // push跳转+state参数
-      this.props.history.push(`/home/message/detail/`, { id, title })
-    }
-  }
   render() {
     const { msgArr } = this.state
     return (
@@ -42,14 +18,25 @@ export default class Message extends Component {
           {msgArr.map((msgObj) => {
             return (
               <li key={msgObj.id}>
-                <ul>消息{msgObj.id}</ul>
-
-                <button onClick={this.pushShow(msgObj.id, msgObj.title)}>
-                  push
-                </button>
-                <button onClick={this.replaceShow(msgObj.id, msgObj.title)}>
-                  replace
-                </button>
+                {/* 向路由组件传递params参数 */}
+                {/* <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>
+                  {msgObj.title}
+                </Link> */}
+                {/* 向路由组件传递search参数 */}
+                {/* <Link
+                  to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}
+                >
+                  {msgObj.title}
+                </Link> */}
+                {/* 向路由组件传递state参数 */}
+                <Link
+                  to={{
+                    pathname: '/home/message/detail/',
+                    state: { id: msgObj.id, title: msgObj.title }
+                  }}
+                >
+                  {msgObj.title}
+                </Link>
               </li>
             )
           })}

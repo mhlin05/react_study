@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import qs from 'querystring'
+import qs from 'querystring'
 
 // name=tom&age=18 key=value&key=value
 // 这个结构叫 urlencoded结构
